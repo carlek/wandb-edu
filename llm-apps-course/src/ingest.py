@@ -57,20 +57,27 @@ def chunk_documents(
     return split_documents
 
 
+def get_openai_api_key() -> str:
+    from dotenv import load_dotenv, find_dotenv
+    _ = load_dotenv(find_dotenv())
+    return os.getenv('OPENAI_API_KEY', None)
+
+
 def create_vector_store(
     documents,
-    vector_store_path: str = "./vector_store",
+    vector_store_path: str = "src/vector_store",
 ) -> Chroma:
     """Create a ChromaDB vector store from a list of documents
 
     Args:
         documents (_type_): A list of documents to add to the vector store
-        vector_store_path (str, optional): The path to the vector store. Defaults to "./vector_store".
+        vector_store_path (str, optional): The path to the vector store. Defaults to "src/vector_store".
 
     Returns:
         Chroma: A ChromaDB vector store containing the documents.
     """
-    api_key = os.environ.get("OPENAI_API_KEY", None)
+
+    api_key = get_openai_api_key()
     embedding_function = OpenAIEmbeddings(openai_api_key=api_key)
     vector_store = Chroma.from_documents(
         documents=documents,
@@ -151,7 +158,7 @@ def get_parser():
     parser.add_argument(
         "--docs_dir",
         type=str,
-        required=True,
+        default="dfinity_md",
         help="The directory containing the wandb documentation",
     )
     parser.add_argument(
@@ -169,13 +176,13 @@ def get_parser():
     parser.add_argument(
         "--vector_store",
         type=str,
-        default="./vector_store",
+        default="src/vector_store",
         help="The directory to save or load the Chroma db to/from",
     )
     parser.add_argument(
         "--prompt_file",
         type=pathlib.Path,
-        default="./chat_prompt.json",
+        default="src/chat_prompt.json",
         help="The path to the chat prompt to use",
     )
     parser.add_argument(
