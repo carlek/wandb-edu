@@ -4,4 +4,4 @@ i followed the guide in the day docs how to make ledger canister  https://intern
 How to do token transfer? Can someone point me in the right direction? found this repo but its 2 years old. what token standard is this?
 since las night i have been getting this server error  as in the image , did some debugging and  found out that it happens whenever i call a backend function with the actor created with the authenticated identity. does anyone have a clue of what be the root cause ?
 I have created a token for my DAO and a ledger canister. I am however stuck on how to access functionality on my backend canister like create an account and assigning token to a user. Should I use an inter canister call ?
-This may be simple and I may be just confused, but which principal should I use to register and identify users, the authclient principal from identity or the ic.caller()?
+This may be simple and I may be just confused, but which principal should I use to register and identify users, the authclient principal from identity or the ic.caller()???
