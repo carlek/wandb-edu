@@ -18,6 +18,7 @@ flagged
 
 # Jupyter Notebook
 .ipynb_checkpoints
+.history
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
