@@ -95,7 +95,7 @@ with gr.Blocks() as demo:
     )
     with gr.Row():
         question = gr.Textbox(
-            label="Type in your questions about DINFINTY here and press Enter!",
+            label="Type in your questions about DFINITY here and press Enter!",
             placeholder="How do I update the balance in a container?",
         )
         openai_api_key = gr.Textbox(
